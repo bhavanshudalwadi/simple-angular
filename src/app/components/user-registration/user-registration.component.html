@@ -1,0 +1,201 @@
+<form #regForm="ngForm" id="regForm">
+  <h1>User Registration</h1>
+  <mat-grid-list cols="6" rowHeight="90px" style="width: 600px">
+    <mat-grid-tile colspan="3">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          type="text"
+          minlength="3"
+          name="firstName"
+          [ngModel]="regDetails.fname"
+          #firstName="ngModel"
+          required
+          placeholder="Ex. Jon"
+        />
+        @if (firstName.hasError('firstName') && !firstName.hasError('required')) {
+          <mat-error>Please enter a valid first name</mat-error>
+        } @if (firstName.hasError('required')) {
+          <mat-error>First Name is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          type="text"
+          name="lastName"
+          [ngModel]="regDetails.lname"
+          #lastName="ngModel"
+          required
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. Deo"
+        />
+        @if (lastName.hasError('lastName') && !lastName.hasError('required')) {
+        <mat-error>Please enter a valid Last name</mat-error>
+        } @if (lastName.hasError('required')) {
+        <mat-error>Last Name is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          name="email"
+          [ngModel]="regDetails.email"
+          #email="ngModel"
+          required
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. jondeo@example.com"
+        />
+        @if (email.hasError('email') && !email.hasError('required')) {
+          <mat-error>Please enter a valid email address</mat-error>
+        } @if (email.hasError('required')) {
+          <mat-error>Email is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select
+          name="gender"
+          [ngModel]="regDetails.gender"
+          #gender="ngModel"
+          required
+          [errorStateMatcher]="matcher"
+          placeholder="Select Gender"
+        >
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+        @if (gender.hasError('gender') && !gender.hasError('required')) {
+          <mat-error>Please enter a valid Gender</mat-error>
+        }
+        @if (gender.hasError('required')) {
+          <mat-error>Gender is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>PIN code</mat-label>
+        <input
+          matInput
+          type="number"
+          name="pincode"
+          [ngModel]="regDetails.pincode"
+          minlength="6"
+          maxlength="6"
+          #pincode="ngModel"
+          required
+          [errorStateMatcher]="matcher"
+          (keyup)="onPincodeChange($event)"
+          placeholder="Ex. 364001"
+        />
+        @if (pincode.hasError('pincode') || pincode.hasError('incorrect') && !pincode.hasError('required')) {
+          <mat-error>Please enter a valid Pincode</mat-error>
+        }
+        @if (pincode.hasError('required')) {
+          <mat-error>Pincode is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>Country</mat-label>
+        <input
+          matInput
+          name="country"
+          [ngModel]="regDetails.country"
+          #country="ngModel"
+          required
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. India"
+        />
+        @if (country.hasError('country') && !country.hasError('required')) {
+          <mat-error>Please enter a valid Country</mat-error>
+        }
+        @if (country.hasError('required')) {
+          <mat-error>Country is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>State</mat-label>
+        <input
+          matInput
+          name="state"
+          [ngModel]="regDetails.state"
+          #state="ngModel"
+          required
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. Gujarat"
+        />
+        @if (state.hasError('state') && !state.hasError('required')) {
+          <mat-error>Please enter a valid State</mat-error>
+        }
+        @if (state.hasError('required')) {
+          <mat-error>State is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>District</mat-label>
+        <input
+          matInput
+          name="district"
+          [ngModel]="regDetails.district"
+          #district="ngModel"
+          required
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. Bhavnagar"
+        />
+        @if (district.hasError('district') && !district.hasError('required')) {
+          <mat-error>Please enter a valid District</mat-error>
+        }
+        @if (district.hasError('required')) {
+          <mat-error>District is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" rowspan="1.5">
+      <mat-form-field class="w-100 me-1" appearance="outline">
+        <mat-label>Address</mat-label>
+        <textarea
+          matInput
+          name="address"
+          [ngModel]="regDetails.address"
+          #address="ngModel"
+          required
+          [errorStateMatcher]="matcher"
+          rows="3"
+        >
+        </textarea>
+        @if (address.hasError('address') && !address.hasError('required')) {
+          <mat-error>Please enter a valid Address</mat-error>
+        }
+        @if (address.hasError('required')) {
+          <mat-error>Address is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <button mat-raised-button color="primary">Register Now</button>
+</form>
+
+<!-- fname, lname
+email
+phone, dob
+gender, country
+state, city
+address, -->

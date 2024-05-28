@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-theme-color: mat.define-palette(mat.$blue-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-theme-color,
+    accent: $my-theme-color,
+  ),
+));
+
+html, body {
+  @include mat.all-component-themes($my-theme);
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; height: 100%; }
+
+.calculator {
+  width: 20rem;
+  height: 36rem;
+  background-color: #eeeeee;
+  display: grid;
+  padding: 12px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 2px solid #999;
+  border-radius: 20px;
+}
+
+.keys-numbers {
+  grid-area: keys-numbers;
+  direction: rtl;
+}
+
+.keys-numbers .key-zero > button {
+  width: 9.1rem;
+  text-align: left;
+  padding-left: 15%;
+}
+.keys-operators {
+  grid-area: keys-operators;
+}
+.keys-function {
+  grid-area: keys-function;
+}
+.calculator-keypad {
+  padding-top: 0.3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 5rem);
+  grid-template-rows: repeat(5, 5rem);
+  grid-template-areas: "keys-function keys-function keys-function keys-operators" "keys-numbers keys-numbers keys-numbers keys-operators" "keys-numbers keys-numbers keys-numbers keys-operators" "keys-numbers keys-numbers keys-numbers keys-operators" "keys-numbers keys-numbers keys-numbers keys-operators";
+}
+.calculator-input {
+  border: 2px solid #999;
+  text-align: right;
+  padding-right: 5%;
+  padding-top: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: xx-large;
+  background-color: #fff;
+}
+
+.result {
+  min-height: 3rem;
+  color: #666666;
+}
+
+.calcBtn {
+  width: 4.2rem;
+  height: 4.2rem;
+  margin: 0.4rem;
+  text-align: center;
+  font-size: 150%;
+  border-radius: 0.8rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #bbb;
+}
+
+.mat-grid-tile-content {
+  display: block;
+}

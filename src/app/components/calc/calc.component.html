@@ -1,0 +1,33 @@
+<div class="calculator">
+    <div class="calculator-input">
+      <div class="result">{{ prevValue }}</div>
+      <div class="result">{{ op }}</div>
+      <div class="result">{{ nextValue }}</div>
+    </div>
+    <div class="calculator-keypad">
+      <div class="keys-function">
+        <app-calc-key (keyClick)="handleOperation($event)" keyValue="c">c</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" keyValue="±">±</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" keyValue="%">%</app-calc-key>
+      </div>
+      <div class="keys-operators">
+        <app-calc-key (keyClick)="handleOperation($event)" keyValue="+">+</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" keyValue="-">-</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" keyValue="*">*</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" keyValue="/">/</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" keyValue="=">=</app-calc-key>
+      </div>
+      <div class="keys-numbers">
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="9">9</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="8">8</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="7">7</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="6">6</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="5">5</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="4">4</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="3">3</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="2">2</app-calc-key>
+        <app-calc-key (keyClick)="handleOperation($event)" [keyValue]="1">1</app-calc-key>
+        <app-calc-key class="key-dot" (keyClick)="handleOperation($event)" keyValue=".">.</app-calc-key>
+        <app-calc-key class="key-zero" (keyClick)="handleOperation($event)" [keyValue]="0">0</app-calc-key>
+      </div>
+  </div>
